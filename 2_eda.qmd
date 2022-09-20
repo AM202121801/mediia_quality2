@@ -1,0 +1,82 @@
+---
+title: "미디어품칠연구2탐색분석"
+author: "FLOR"
+format: html
+toc: true
+number sections: true
+editor: visual
+theme: litera
+---
+#자료 갖고오기 
+v.rds  p.rds 파일을 작업디렉토리 복사
+---
+
+```{r}
+getwd()
+```
+
+---
+R화경으로 이입
+---
+
+```{r}
+readRDS("v.rds") -> df
+dim(df)
+str(df)
+```
+
+```{r}
+names(df)
+```
+
+---
+# 변수선택
+---
+
+```{r}
+library(tidyverse)
+library(tidytable)
+df %>% select(starts_with('m_'),vaccine_norm, vaccine) -> df
+```
+
+---
+#기술통계
+---
+
+```{r}
+library(skimr)
+skim(df)
+
+
+```
+
+```{r}
+library(GGally)
+ggpairs(df)
+```
+
+---
+분석할 변수를 계증지각, 6가지 도덕 기반, 지적겸손을 선택했다.
+8개 변수  
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
